@@ -25,7 +25,7 @@ def client():
 def test_health(client):
     response = client.get('/')
     assert response.status_code == 200
-    assert response.json == 'Healthy'
+    assert response.json == 'Healthy - first commit test'
 
 
 def test_auth(client):
@@ -35,6 +35,6 @@ def test_auth(client):
                            data=json.dumps(body),
                            content_type='application/json')
 
-    assert response.status_code == 202 #changed from 200 to 202 to make test fail on purpose
+    assert response.status_code == 200
     token = response.json['token']
     assert token is not None
